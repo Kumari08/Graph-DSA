@@ -36,7 +36,16 @@ void bfs(T src,T dest){
             }
         }
     }
- cout<<dis[dest]<<endl;
+        //path 
+    cout<<"The path followed is:"<<endl;
+    T temp=dest;
+    while(temp!=src){
+        cout<<temp<<"<--";
+        temp=parent[temp];
+    }
+    cout<<src<<endl;
+ cout<<"minimum no. of dice thrown is="<<dis[dest]<<endl;
+
 
 }
 };
