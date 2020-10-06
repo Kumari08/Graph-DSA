@@ -23,75 +23,18 @@ using namespace std;
 int r,c,mat[100][100];
 
  
-
-void rec(int i,int j)
-
-{
-
- if(i>=0 && i<r && j>=0 && j<c)
-
- {
-
-  mat[i][j]=0;
-
- 
-
-  if(mat[i+1][j]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i-1][j]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i][j+1]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i][j-1]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i+1][j+1]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i-1][j-1]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i+1][j-1]==1)
-
-  rec(i+1,j);
-
- 
-
-  if(mat[i-1][j+1]==1)
-
-  rec(i+1,j);
-
-         
-
- }
-
-     
-
+void rec(int i, int j) {
+   if (i < 0 || i >= r || j < 0 || j >= c)
       return;
-
+   if (mat[i][j] != 1)
+      return;
+   mat[i][j] = 0;
+   for (int di = -1; di <= 1; ++di)
+      for (int dj = -1; dj <= 1; ++dj)
+         if (di != 0 || dj != 0)
+            rec(i + di, j + dj);
 }
-
+ 
  
 
 void floodfill()
